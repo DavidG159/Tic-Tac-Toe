@@ -77,6 +77,30 @@ window.addEventListener('DOMContentLoaded',() =>{
         announcer.classList.remove('hide');
     };
 
+    const isValidAction = (tile) => {
+        if(tile.innerText === 'X' || tile.innerText === 'O'){
+            return false;
+        }
+
+        return true;
+    };
+
+
+    const resetBoard = () => {
+        board = ['','','','','','','','',''];
+        isGameActive = true;
+        announcer.classList.add('hide');
+
+        if(currentPlayer === 'O'){
+            changePlayer();
+        }
+
+        tiles.forEach(tile => {
+            tile.innerText = '';
+            tile.classList.remove('playerX');
+            tile.classList.remove('playerO');
+        });
+    }
 
 
     const changePlayer = () => {
